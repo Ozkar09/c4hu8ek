@@ -3,7 +3,7 @@ class Api::V1::PinsController < ApplicationController
   def index
 
     if autenticate?
-      render json: Pin.all.order('created_at DESC')
+      render json: Pin.all.order('created_at DESC'), status: 200
     else
       head 401
     end
