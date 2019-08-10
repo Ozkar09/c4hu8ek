@@ -5,6 +5,13 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   after_initialize :generate_token
+  before_create :set_auth_token
+
+  private
+  def set_auth_token
+    return if auth_token.present?
+    self.auth_token = generate_token    
+  end
 
   private
     def generate_token
