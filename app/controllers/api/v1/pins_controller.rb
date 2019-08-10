@@ -5,7 +5,7 @@ class Api::V1::PinsController < ApplicationController
     if autenticate?
       render json: Pin.all.order('created_at DESC'), status: 200
     else
-      head 401
+      head 200
     end
 
   end
